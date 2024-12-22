@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ingcold的个人网站</title>
+    <style>
+        #div {
+            text-align: center;
+        }
+        #back{
+            border-radius: 10px;
+            background-color: antiquewhite;
+        }
+        #back:hover{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="../content.html" style="position: absolute;left: 40px;">
+        <button id="back">返回content</button>
+    </a>
+    <br>
+    <div id=div>
+        <h2 >软件建模</h2>
+        <p>1.处理用例间关系<br>
+            用例有&lt&ltinclude>> &lt&ltextend>>br
+            主动构造子用例的接口&lt&ltboundary>>分析类<br>
+            这可以通过父用例&lt&ltcontroller>>分析类<br>
+            向子用例接口类&lt&ltboundary>>分析类传递消息<br>
+            2.用例行为分配给类<br>
+            由用例图得到初期的&lt&ltboundary>>&lt&ltcontroller>>&lt&ltentity>> <br>
+            有一套规则<br>
+            3.VOPC可以反映交互<br>
+            4.软件建模的思考过程有一套方法论,这个过程思考什么,下个过程思考什么,<br>
+            实际上有已经规范化了的阶段过程,各个过程都伴随着对离散单体的操作,<br>
+            比如说分析类,用例,这些都是离散的存在,这些离散的概念化存在来自于大脑对现实世界<br>
+            某一部分具有共性过程的收缩与表示,也就是对连续世界的离散化<br>
+            5.关于进化论与软件建模:人类的大脑进化出了对连续世界进行收缩并用离散化的符号<br>
+            表示被收缩了的过程的能力<br>
+            6.建模是对连续的现实世界进行  (分割--&gt收缩--&gt离散化)  为特定抽象的离散单体并对离<br>
+            散单体进行连续推导与操作，            最终得到一种合适的单体集合，在这种单体集合下，<br>
+            有关联的被放到同一单体内部或附近，无关的被放到不同单体或远离，并且这种表述对各种层<br>
+            次的单体是递归的，也就是说，单体可以包含单体，外围单体符合这种表述，内部单体也符合这种<br>
+            表述，不管层次如何<br>
+            7.关于由用例获得分析类的过程中3种分析类存在的作用<br>
+            a.&lt&ltcontroller>>分析类可以维持用例结构及功能的存在,因为&lt&ltcontroller>>和<br>
+            用例一开始基本上是一一对应的,此外,用例要实现这样的功能,用例的&lt&ltcontroller>> <br>
+            可以负责向相关的&lt&ltentity>>发送消息进行协调与功能实现,保证用例不"消失"<br>
+            b.&lt&ltboundary>>分析类,用于触发<br>
+            c.&lt&ltentity>>寻求依据不要看用例有多少个,要看需要哪些实体数据<br>
+            
+            
+            
+            活动图在用例文档中，活动图可以出现系统
+            顺序图不可以出现系统
+            </p>
+    </div>
+
+</body>
+</html>
