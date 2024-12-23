@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Navigation</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .menu-item {
+            margin: 10px 0;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .menu-item:hover {
+            background-color: #34495e;
+        }
+        .submenu {
+            display: none;
+            padding-left: 15px;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            margin-left: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>导航菜单</h2>
+    <div class="menu-item" onclick="toggleSubmenu('submenu1')">
+        父菜单 1
+    </div>
+    <div id="submenu1" class="submenu">
+        <div class="menu-item" onclick="showContent('content1')">子菜单 1-1</div>
+        <div class="menu-item" onclick="showContent('content2')">子菜单 1-2</div>
+    </div>
+    <div class="menu-item" onclick="toggleSubmenu('submenu2')">
+        父菜单 2
+    </div>
+    <div id="submenu2" class="submenu">
+        <div class="menu-item" onclick="showContent('content3')">子菜单 2-1</div>
+        <div class="menu-item" onclick="showContent('content4')">子菜单 2-2</div>
+    </div>
+    <div class="menu-item" onclick="toggleSubmenu('submenu3')">
+        父菜单 3
+    </div>
+    <div id="submenu3" class="submenu">
+        <div class="menu-item" onclick="showContent('content5')">子菜单 3-1</div>
+        <div class="menu-item" onclick="showContent('content6')">子菜单 3-2</div>
+    </div>
+</div>
+
+<div class="content" id="contentArea">
+    <h2>请选择文章内容</h2>
+    <p>点击左侧菜单以查看文章内容。</p>
+</div>
+
+<script>
+function toggleSubmenu(submenuId) {
+    const submenu = document.getElementById(submenuId);
+    submenu.style.display = (submenu.style.display === 'block') ? 'none' : 'block';
+}
+
+function showContent(contentId) {
+    const contentMap = {
+        content1: "这是一篇关于子菜单 1-1 的文章内容。",
+        content2: "这是一篇关于子菜单 1-2 的文章内容。",
+        content3: "这是一篇关于子菜单 2-1 的文章内容。",
+        content4: "这是一篇关于子菜单 2-2 的文章内容。",
+        content5: "这是一篇关于子菜单 3-1 的文章内容。",
+        content6: "这是一篇关于子菜单 3-2 的文章内容."
+    };
+    
+    const contentArea = document.getElementById('contentArea');
+    contentArea.innerHTML = `<h2>${contentId.replace('content', '文章')} 的内容</h2>
+                             <p>${contentMap[contentId]}</p>`;
+}
+</script>
+
+</body>
+</html>

@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-  <title>Pingjian Ding - Courses</title>
+  <title>ingcold的个人网站</title>
   <style>
     code {
       white-space: pre-wrap;
@@ -98,16 +98,45 @@
 
 <body class="nav-fixed">
 
+  <div class="background"></div>
+       <style>
+            body, html {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                font-family: Arial, sans-serif;
+            }
+            .background {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('./assets/ihua/ihua_atmosphere.jpg'); /* 替换为你的背景图片路径 */
+                background-size: cover;
+                background-position: center;
+                filter: blur(1px); /* 虚化效果 */
+                z-index: -1; /* 确保背景在最底层 */
+            }
+            #quarto-header{
+              opacity: 0.9;
+            }
+            #quarto-content{
+              opacity: 1;
+            }
+
+         </style>
+
   <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
         <div class="navbar-brand-container mx-auto">
           <a class="navbar-brand" href="./index.html">
-            <span class="navbar-title">Pingjian Ding</span>
+            <span class="navbar-title">INGCOLD</span>
           </a>
         </div>
-        <div id="quarto-search" class="" title="Search"></div>
+        <!-- <div id="quarto-search" class="" title="Search"></div> -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
           onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -120,6 +149,26 @@
                 <span class="menu-text">Home</span></a>
             </li>
             <li class="nav-item">
+              <a href="./LAIN.html" class="nav-link" aria-current="page">
+                <span class="menu-text">LAIN</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="常守朱.html" class="nav-link" aria-current="page">
+                <span class="menu-text">
+                  常守朱                                                   
+                </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./content.html" aria-current="page">
+                <span class="menu-text">Content</span></a>
+            </li>
+            <li class="nav-item">
+              <a href="Picture.html" class="nav-link active" aria-current="page">
+                <span class="menu-text">Picture</span></a>
+            </li>
+            <!-- <li class="nav-item">
               <a class="nav-link" href="./researches.html">
                 <span class="menu-text">Researches</span></a>
             </li>
@@ -128,15 +177,15 @@
                 <span class="menu-text">Publications</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="./courses.html" aria-current="page">
+              <a class="nav-link" href="./courses.html">
                 <span class="menu-text">Courses</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./blogs.html">
                 <span class="menu-text">Blogs</span></a>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <a class="nav-link" href="./contact.html">
+              <a class="nav-link" href="./contact.html" aria-current="page">
                 <span class="menu-text">Contact</span></a>
             </li>
           </ul>
@@ -146,6 +195,10 @@
       </div> <!-- /container-fluid -->
     </nav>
   </header>
+
+
+
+
   <!-- content -->
   <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
     <!-- sidebar -->
@@ -158,50 +211,33 @@
 
       <header id="title-block-header" class="quarto-title-block default">
         <div class="quarto-title">
-          <h1 class="title">Courses</h1>
+          <h1 class="title"></h1>
         </div>
-
-
-
-        <div class="quarto-title-meta">
-
-
-
-
-        </div>
-
-
+        <div class="quarto-title-meta"></div>
 
       </header>
 
-
       <ul>
         <li>
-          <p>Introduction to Probability and Statistics for Epidemiology</p>
+          <a href="/personal_picture_html/image_grid_prepare.html">
+            <span>image_grid_prepare</span>
+          </a>
+        </li>
+            <ul>
+              <li>
+
+              </li>
+            </ul>
+        <li>
         </li>
         <li>
-          <p>Introduction to Statistical Learning</p>
         </li>
-        <li>
-          <p>Introduction to Bioinformatics</p>
-        </li>
-        <li>
-          <p>Data Analysis and Visualisation</p>
-        </li>
-        <li>
-          <p>Genome-wide Association Studies</p>
-        </li>
-        <li>
-          <p>Numerical Opitimization</p>
-        </li>
-        <li>
-          <p>Introduction to Deep Learning</p>
-        </li>
+
       </ul>
-
-
-
     </main> <!-- /main -->
+
+
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const toggleBodyColorMode = (bsSheetEl) => {
@@ -613,20 +649,25 @@
         }
       });
     </script>
+
   </div> <!-- /content -->
-  <footer class="footer">
+
+
+
+
+  <!-- <footer class="footer">
     <div class="nav-footer">
       <div class="nav-footer-left">
         &nbsp;
       </div>
       <div class="nav-footer-center">
-        <p>Copyright 2023, Pingjian Ding</p>
+        <p></p>
       </div>
       <div class="nav-footer-right">
         &nbsp;
       </div>
     </div>
-  </footer>
+  </footer> -->
 
 
 

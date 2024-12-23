@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .blog-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: calc(25% - 20px); /* 每行4个，减去间距 */
+            overflow: hidden;
+            text-align: center;
+            text-decoration: none; /* 去掉链接下划线 */
+            color: inherit; /* 继承颜色 */
+        }
+        .blog-item img {
+            width: 100%;
+            height: auto;
+        }
+        .blog-item h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .blog-item p {
+            padding: 0 10px 10px;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .blog-item {
+                width: calc(50% - 20px); /* 平板设备上每行2个 */
+            }
+        }
+        @media (max-width: 480px) {
+            .blog-item {
+                width: 100%; /* 手机设备上每行1个 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>博客概览</h1>
+<div class="container">
+    <a href="blog1.html" class="blog-item">
+        <img src="blog1.jpg" alt="Blog 1">
+        <h3>博客标题 1</h3>
+        <p>这是博客 1 的简短描述。了解更多关于这个主题的信息。</p>
+    </a>
+    <a href="blog2.html" class="blog-item">
+        <img src="blog2.jpg" alt="Blog 2">
+        <h3>博客标题 2</h3>
+        <p>这是博客 2 的简短描述。探索这个话题的深度和见解。</p>
+    </a>
+    <a href="blog3.html" class="blog-item">
+        <img src="blog3.jpg" alt="Blog 3">
+        <h3>博客标题 3</h3>
+        <p>这是博客 3 的简短描述。发现更多相关内容。</p>
+    </a>
+    <a href="blog4.html" class="blog-item">
+        <img src="blog4.jpg" alt="Blog 4">
+        <h3>博客标题 4</h3>
+        <p>这是博客 4 的简短描述。获取最新的资讯和观点。</p>
+    </a>
+    <a href="blog5.html" class="blog-item">
+        <img src="blog5.jpg" alt="Blog 5">
+        <h3>博客标题 5</h3>
+        <p>这是博客 5 的简短描述。欢迎深入了解。</p>
+    </a>
+    <a href="blog6.html" class="blog-item">
+        <img src="blog6.jpg" alt="Blog 6">
+        <h3>博客标题 6</h3>
+        <p>这是博客 6 的简短描述。阅读更多精彩内容。</p>
+    </a>
+    <a href="blog7.html" class="blog-item">
+        <img src="blog7.jpg" alt="Blog 7">
+        <h3>博客标题 7</h3>
+        <p>这是博客 7 的简短描述。探索不同的观点。</p>
+    </a>
+    <a href="blog8.html" class="blog-item">
+        <img src="blog8.jpg" alt="Blog 8">
+        <h3>博客标题 8</h3>
+        <p>这是博客 8 的简短描述。获取灵感和启发。</p>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .video-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .video-item:hover {
+            transform: scale(1.05);
+        }
+        .video-item img {
+            width: 100%;
+            border-radius: 8px;
+            transition: filter 0.3s;
+        }
+        .video-item:hover img {
+            filter: blur(3px);
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .video-item:hover .overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Video Overview</h1>
+<div class="container">
+    <div class="video-item" onclick="location.href='video1.html'">
+        <img src="thumbnail1.jpg" alt="Video 1">
+        <div class="overlay">Play Video 1</div>
+    </div>
+    <div class="video-item" onclick="location.href='video2.html'">
+        <img src="thumbnail2.jpg" alt="Video 2">
+        <div class="overlay">Play Video 2</div>
+    </div>
+    <div class="video-item" onclick="location.href='video3.html'">
+        <img src="thumbnail3.jpg" alt="Video 3">
+        <div class="overlay">Play Video 3</div>
+    </div>
+    <div class="video-item" onclick="location.href='video4.html'">
+        <img src="thumbnail4.jpg" alt="Video 4">
+        <div class="overlay">Play Video 4</div>
+    </div>
+    <!-- Add more video items as needed -->
+</div>
+
+</body>
+</html>

@@ -81,6 +81,37 @@
 
     <body class="nav-fixed fullcontent">
 
+      <div class="background"></div>
+  <style>
+body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./assets/yumu/yumu_水池倒影.jpg'); /* 替换为你的背景图片路径 */
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px); /* 虚化效果 */
+            z-index: -1; /* 确保背景在最底层 */
+        }
+        #quarto-header{
+          opacity: 0.5;
+        }
+        #quarto-content{
+          opacity: 0.8;
+          font-weight: bold;
+
+        }
+
+  </style>
+
             <div id="quarto-search-results"></div>
             <header id="quarto-header" class="headroom fixed-top">
                 <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
@@ -117,6 +148,10 @@
                                                 <a class="nav-link" href="./content.html" aria-current="page">
                                                   <span class="menu-text">Content</span></a>
                                               </li>
+                                              <li class="nav-item">
+                                                <a href="Picture.html" class="nav-link" aria-current="page">
+                                                  <span class="menu-text">Picture</span></a>
+                                              </li>
                                               <!-- <li class="nav-item">
                                                 <a class="nav-link" href="./researches.html"> 
                                                 <span class="menu-text">Researches</span>
@@ -144,6 +179,7 @@
                       </div> <!-- /container-fluid -->
                 </nav>
             </header>
+            <br><br>
 
 
             <!-- content -->
@@ -163,7 +199,7 @@
                               <div class="quarto-title-meta"></div>
                         </header>
 
-                        <main class="content" id="quarto-document-content">
+                        <main class="content" id="quarto-document-content" style="opacity: 1;">
                             <p>专业:计算机软件</p>
 
                             <p>100张A4纸张大约4.5厘米(73克版),每一张双页写满刚好100行代码,那么4.5cm写满
@@ -592,7 +628,9 @@
             </div> <!-- /content -->
 
 
-            <footer class="footer">
+            <br><br><br>
+            <!-- <footer class="footer">
+
                   <div class="nav-footer">
 
                     <div class="nav-footer-left">
@@ -608,8 +646,10 @@
                     </div>
                     
                   </div>
-            </footer>
+            </footer> -->
 
+            <!--如果保留footer的化,在body的div设置点background-image就会下面空出一段白的-->
+            
 
     </body>
 

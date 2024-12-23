@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 80px;
+            background-color: #f4f4f4;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .gallery-item {
+            flex: 0 1 calc(20% - 10px); /* 每行5张图片，减去间距 */
+            margin-bottom: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .description {
+            padding: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 1 calc(50% - 10px); /* 平板设备上每行2张 */
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-item {
+                flex: 0 1 100%; /* 手机设备上每行1张 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div class="gallery">
+        <div class="gallery-item">
+            <a href="../assets/tsunemori/tsunemori_long1.png">
+                <img src="../assets/tsunemori/tsunemori_long1.png" alt="Image 1">
+            </a>
+            <div class="description">常守朱</div>
+        </div>
+        <div class="gallery-item">
+            <img src="../assets/tsunemori/tsunemori_long2.png" alt="Image 2" onclick="onOpenImage()">
+            <div class="description">这是第二张图片的说明文字。</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image3.jpg" alt="Image 3">
+            <div class="description">这是第三张图片的说明文字。</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image4.jpg" alt="Image 4">
+            <div class="description">这是第四张图片的说明文字。</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image5.jpg" alt="Image 5">
+            <div class="description">这是第五张图片的说明文字。</div>
+        </div>
+        <div class="gallery-item">
+            <img src="../assets/tsunemori/tsunemori_long1.png" alt="Image 1">
+            <div class="description">常守朱</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image2.jpg" alt="Image 2">
+            <div class="description">这是第二张图片的说明文字。</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image3.jpg" alt="Image 3">
+            <div class="description">这是第三张图片的说明文字。</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image4.jpg" alt="Image 4">
+            <div class="description">这是第四张图片的说明文字。</div>
+        </div>
+        <div class="gallery-item">
+            <img src="image5.jpg" alt="Image 5">
+            <div class="description">这是第五张图片的说明文字。</div>
+        </div>
+        <!-- 可以继续添加更多图片 -->
+    </div>
+    <script>
+        function onOpenImage() {
+            window.open('../assets/tsunemori/tsunemori_long2.png');
+            
+        }
+    </script>
+</body>
+</html>

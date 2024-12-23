@@ -10,17 +10,16 @@ body {
   align-items: center;
   justify-content: center;
   /* height: 100vh; */
-  overflow: auto;
+  overflow:auto
   margin: 0;
+  padding: 0;
 }
-/*
-height注释掉
-overflow不要是hidden 
- */
 
 .container {
   display: flex;
   width: 90vw;
+
+  height: 80vh;
 }
 
 .panel {
