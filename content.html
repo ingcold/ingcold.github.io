@@ -30,7 +30,7 @@
 
     div.column {
       flex: auto;
-      overflow-x: auto;
+      overflow-x:auto;
     }
 
     div.hanging-indent {
@@ -130,7 +130,7 @@
 
   </style>
 
-  <div id="quarto-search-results"></div>
+  <!-- <div id="quarto-search-results"></div> -->
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -204,77 +204,109 @@
 
   <!-- content -->
   <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+
     <!-- sidebar -->
     <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-      
-    </div>
+    <!-- <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">   
+    </div> -->
+    <!--这个地方原先有一个sidebar,在我添加我的sidebar之后,由于使用了相同的class标签名
+    相当于激活了这个sidebar,导致上面总是多出来一坨
+    并且还出现了x和y两个方向的overflow:scroll
+    我把前面哪个quarto-search-results也注释掉了
+    这是通过右键检查打开开发人员工具发现的
+    -2024年12月25日
+     -->
+
+
     <button class="nav-btn open-btn" style="top: 60px;left:30px;">
       <i class="fas fa-bars"></i>
+    </button>
+
+    <button class="nav-btn close-btn" style="top: 100px;left: 30px;">
+      <i class="fas fa-times"></i>
     </button>
     
     <div class="nav nav-black" style="left: 30px;">
       <div class="nav nav-red">
         <div class="nav nav-white">
           
-          <button class="nav-btn close-btn" style="top: 60px;">
-            <i class="fas fa-times"></i>
-          </button>
   
   
-  
-          <ul class="list">
+        <div class="sidebar">
+            <h2>DIRECTORY</h2>
 
-            <li><a href="content/软件建模.html">软件建模</a></li>
-            <li><a href="content/数据库原理.html">数据库原理</a></li>
-            <li><a href="#">软件设计模式</a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li>
-              <a href="#"></a>
-              <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-              </ul>
-            </li>
+              <div class="menu-item" onclick="location.href='/content/软件建模.html'">
+                软件建模
+              </div>
 
-          </ul>
+              <div class="menu-item" onclick="location.href='/content/软件本质.html'">
+                软件本质
+              </div>
+
+            <div class="menu-item" onclick="toggleSubmenu('数据库原理')">
+                数据库原理 >
+            </div>
+            <div id="数据库原理" class="submenu">
+                <div class="menu-item" onclick="location.href='/content/SQL.html'">SQL</div>
+                <div class="menu-item" onclick="location.href='/content/数据库原理.html'">数据库原理非SQL部分的其它内容</div>
+            </div>
+
+
+        </div>
+        
+        <style>
+
+          .sidebar {
+              width: 100%;  /*从250设置为100% */
+              height: 100%;
+
+              background-color: #2c3e50;
+              color: white;
+              position: absolute;
+              top: 15px;
+              padding: 20px;
+              box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+              /* overflow-y: scroll; */
+  
+          }
+          .sidebar h2 {
+              margin: 0;
+              font-size: 1.5em;
+          }
+          .menu-item {
+              margin: 10px 0;
+              cursor:pointer;
+              padding: 10px;
+              border-radius: 5px;
+              transition: background 0.3s;
+          }
+          .menu-item:hover {
+              background-color: #34495e;
+          }
+          .submenu {
+              display: none;
+              padding-left: 15px;
+          }
+
+        </style>
+
+
         </div>
       </div>
     </div>
-    <style>
-      .list li:hover{
-        text-decoration-color: aquamarine;
-      }
 
-    </style>
 
-    <div style="position: absolute; right:250px; top: 60px;">
+
+
+    <!-- <div style="position: absolute; right:250px; top: 60px;">
       <h3>关于content页面</h3>
       <br>
-      <p>content页面用于展示一些知识</p>
+      <p>content页面用于展示一些与软件相关的理论</p>
 
-    </div>
+    </div> -->
 
-    <!-- <button id=button onclick="autoOpenSetBool()">
-      设置左侧栏自动打开
-    </button>
 
-    <div name="text" id="label"></div> -->
-
-    <style>
-      #button {
-        position: absolute;
-        left: 40px;
-        bottom: 80px;
-        border-radius: 40px;
-      }
-      #label {
-        position: absolute;
-        left: 80px;
-        bottom: 10px;
-      }
-    </style>
   
     <script src="/content/script.js"></script>
 

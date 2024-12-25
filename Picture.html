@@ -115,7 +115,7 @@
                 background-image: url('./assets/ihua/ihua_atmosphere.jpg'); /* 替换为你的背景图片路径 */
                 background-size: cover;
                 background-position: center;
-                filter: blur(1px); /* 虚化效果 */
+                filter: blur(0px); /* 虚化效果 */
                 z-index: -1; /* 确保背景在最底层 */
             }
             #quarto-header{
@@ -217,23 +217,76 @@
 
       </header>
 
-      <ul>
-        <li>
-          <a href="/personal_picture_html/image_grid_prepare.html">
-            <span>image_grid_prepare</span>
-          </a>
-        </li>
-            <ul>
-              <li>
-
-              </li>
-            </ul>
-        <li>
-        </li>
-        <li>
-        </li>
-
-      </ul>
+      <div class="container">
+        <a href="/Picture/ihua_xwxt.html" class="blog-item">
+            <img src="/assets/ihua/ihua_xwxt.jpg" alt="Blog 1">
+            <h3>2024年1月22日下雪的长沙</h3>
+            <p>贺龙体育馆</p>
+        </a>
+        <a href="" class="blog-item">
+            <img src="" alt="Blog 2">
+            <h3></h3>
+            <p></p>
+        </a>
+        <a href="" class="blog-item">
+            <img src="" alt="Blog 3">
+            <h3></h3>
+            <p></p>
+        </a>
+        <a href="" class="blog-item">
+            <img src="" alt="Blog 4">
+            <h3></h3>
+            <p></p>
+        </a>
+        
+    </div>
+    <style>
+      /* body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 20px;
+      } */
+      .container {
+          opacity: 0.7;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+      }
+      .blog-item {
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          margin: 10px;
+          width: calc(25% - 20px); /* 每行4个，减去间距 */
+          overflow: hidden;
+          text-align: center;
+          text-decoration: none; /* 去掉链接下划线 */
+          color: inherit; /* 继承颜色 */
+      }
+      .blog-item img {
+          width: 100%;
+          height: auto;
+      }
+      .blog-item h3 {
+          font-size: 1.2em;
+          margin: 10px 0;
+      }
+      .blog-item p {
+          padding: 0 10px 10px;
+          color: #666;
+      }
+      @media (max-width: 768px) {
+          .blog-item {
+              width: calc(50% - 20px); /* 平板设备上每行2个 */
+          }
+      }
+      @media (max-width: 480px) {
+          .blog-item {
+              width: 100%; /* 手机设备上每行1个 */
+          }
+      }
+  </style>
     </main> <!-- /main -->
 
 

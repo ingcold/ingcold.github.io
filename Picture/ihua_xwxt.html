@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .content {
+            flex: 3;
+            padding: 20px;
+        }
+        .sidebar {
+            flex: 1;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 2px solid #ddd;
+            position: relative;
+        }
+        .blog-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        .blog-theme {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .return-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .return-button:hover {
+            background-color: #0056b3;
+        }
+        .comment {
+            margin-top: 20px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: -50px; /* 调整位置 */
+            border: 3px solid #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="content">
+        <a href="../Picture.html" class="return-button">返回</a>
+        <h1 class="blog-title">标题</h1>
+        <h2 class="blog-theme">主题</h2>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+    <div class="sidebar">
+        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+        <div class="comment">
+            <h3>旁侧注释</h3>
+            <p>这是一个简单的博客页面示例，展示了如何布局内容和旁侧元素。</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
