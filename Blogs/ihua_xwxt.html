@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Page</title>
+    <title>ingcold的个人网站</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color:#666;
         }
         .container {
             display: flex;
             max-width: 1200px;
             margin: 20px auto;
-            background-color: #fff;
+            background-color: #666;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            /* overflow: hidden; */
         }
         .content {
             flex: 3;
@@ -27,7 +27,7 @@
         .sidebar {
             flex: 1;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: #666;
             border-left: 2px solid #ddd;
             position: relative;
         }
@@ -56,6 +56,8 @@
             margin-top: 20px;
         }
         .profile-pic {
+            display: none;
+
             width: 100px;
             height: 100px;
             border-radius: 50%;
@@ -65,24 +67,51 @@
             border: 3px solid #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
+
+        .img{
+            border-radius: 5%;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="container">
+    
     <div class="content">
-        <a href="../Picture.html" class="return-button">返回</a>
-        <h1 class="blog-title">标题</h1>
-        <h2 class="blog-theme">主题</h2>
+        <a href="../Blogs.html" class="return-button">返回</a>
+        <h1 class="blog-title"></h1>
+        <h2 class="blog-theme"></h2>
+        <img src="../assets/ihua/ihua_xwxt.jpg" class="img" style="width: 1000px;">
+        <img src="../assets/ihua/ihua_xwxt_zblu.jpg" class="img" style="width: 1000px;">
+        <img src="../assets/ihua/ihua_hels.jpg"style="width: 1000px;" class="img">
+        <img src="../assets/ihua/ihua_motmlp_1.jpg"style="width: 1000px;" class="img">
         <p></p>
         <p></p>
         <p></p>
     </div>
     <div class="sidebar">
-        <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+        <img src="../assets/img/self-portrait.jpg" class="profile-pic">
         <div class="comment">
-            <h3>旁侧注释</h3>
-            <p>这是一个简单的博客页面示例，展示了如何布局内容和旁侧元素。</p>
+            <h3></h3>
+            <br><br><br><br><br>
+            <p>2024/1/23 15:41</p>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br>
+            <p>2024/1/22 15:32</p>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br>
+            <p>2024/5/27 14:19</p>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br>
+            <p>2024/5/27 13:17</p>
+
         </div>
     </div>
 </div>
