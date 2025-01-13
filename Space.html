@@ -7,10 +7,6 @@
   <meta name="generator" content="quarto-1.4.553">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-  integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-  crossorigin="anonymous" />
-  <link rel="stylesheet" href="content/style.css" />
 
 
   <title>ingcold的个人网站</title>
@@ -30,7 +26,7 @@
 
     div.column {
       flex: auto;
-      overflow-x:auto;
+      overflow-x: auto;
     }
 
     div.hanging-indent {
@@ -101,6 +97,8 @@
 </head>
 
 <body class="nav-fixed">
+
+
   <div class="background"></div>
   <style>
         body, html {
@@ -115,22 +113,215 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('./assets/img/yumuLibrary.jpg'); /* 替换为你的背景图片路径 */
+            /*background-image: url('./assets/ihua/ihua_xwxt_zblu.jpg'); /* 替换为你的背景图片路径 */
             background-size: cover;
             background-position: center;
-            filter: blur(0px); /* 虚化效果 */
+            filter: blur(2px); /* 虚化效果 */
             z-index: -1; /* 确保背景在最底层 */
         }
         #quarto-header{
           opacity: 0.6;
         }
         #quarto-content{
-          opacity: 0.6;
+          opacity: 1;
+          position: absolute;
+          left: 270px;
         }
 
   </style>
+  <div class="cube">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.171.0/build/three.webgpu.js",
+          "three/webgpu": "https://unpkg.com/three@0.171.0/build/three.webgpu.js",
+          "three/tsl": "https://unpkg.com/three@0.171.0/build/three.tsl.js",
+          "three/addons/": "https://unpkg.com/three@0.171.0/examples/jsm/"
+        }
+      }
+    </script>
+    <style>
+              body{
+          overflow: hidden;
+          margin: 0;
+        }
+    </style>
+    <script>
+      import * as THREE from "three";
+import * as tsl from "three/tsl";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
-  <!-- <div id="quarto-search-results"></div> -->
+import { pass, mrt, output, emissive } from "three/tsl";
+import { bloom } from 'three/addons/tsl/display/BloomNode.js';
+
+console.clear();
+
+class Postprocessing extends THREE.PostProcessing {
+  constructor(renderer) {
+    const scenePass = pass(scene, camera);
+    scenePass.setMRT(
+      mrt({
+        output,
+        emissive
+      })
+    );
+
+    const outputPass = scenePass.getTextureNode();
+    const emissivePass = scenePass.getTextureNode("emissive");
+
+    const bloomPass = bloom(emissivePass, 0.2, 0);
+
+    super(renderer);
+    
+    // patch the result to add the BeerJS logo
+    this.outputNode = outputPass.add( bloomPass );
+  }
+}
+
+class BoxOfLight extends THREE.Mesh{
+  constructor(){
+    let g = new THREE.BoxGeometry();
+    let m = new THREE.MeshPhysicalNodeMaterial({
+      side: THREE.DoubleSide,
+      metalness:0,
+      roughnessNode: tsl.smoothstep(
+        tsl.abs(
+          tsl.dot(
+            tsl.normalView, 
+            tsl.positionView.normalize().negate()
+          )
+        ), 
+        0.1, 
+        0.25
+      ).oneMinus(),
+      transmission: 1,
+      ior: 1.345,
+      thickness: 1,
+      emissiveNode: tsl.Fn(() => {
+        let uv = tsl.uv().toVar();
+        let absUV = uv.sub(0.5).abs().toVar();
+        let maxUV = tsl.max(absUV.x, absUV.y);
+        
+        let fn = tsl.smoothstep(0.48, 0.49, maxUV);
+        
+        let col = tsl.color(0xaaccff).mul(2);
+        
+        return col.mul(fn);
+      })()
+    });
+    super(g, m);
+
+    [
+      [ 1, 0, 0], 
+      [-1, 0, 0], 
+      [ 0, 1, 0], 
+      [ 0,-1, 0], 
+      [ 0, 0, 1], 
+      [ 0, 0,-1]
+    ].forEach(l => {
+      let v = new THREE.Vector3(...l);
+      let light = new THREE.SpotLight(0xaaccff, Math.PI * 10, 10, Math.PI * 0.75, 1, 2);
+      light.position.copy(v);
+      light.target.position.copy(v.multiplyScalar(2));
+      this.add(light);
+      this.add(light.target);
+    });
+    
+    this.inits = {
+      rot: {x: Math.PI * 2 * Math.random(), y: Math.PI * 2 * Math.random(), z: Math.PI * 2 * Math.random()}
+    }
+  }
+  
+  update(t){
+    this.rotation.set(
+      this.inits.rot.x + t * 0.4 * Math.PI * 2,
+      this.inits.rot.y + t * 0.2 * Math.PI * 2,
+      this.inits.rot.z
+    )
+    this.position.y = 0.25 + Math.sin(t * Math.PI * 2 * 0.125) * 0.75;
+  }
+}
+
+class HollySurface extends THREE.Mesh{
+  constructor(){
+    let shape = new THREE.Shape([[1, 1], [-1, 1], [-1, -1], [1, -1]].reverse().map(p => {return new THREE.Vector2(...p).multiplyScalar(10)}));
+    let size = 1.5;
+    let radius = 0.5;
+    let center = size - radius;
+    let hole = new THREE.Path()
+      .absarc( center, center, radius, Math.PI * 0.5 * 0, Math.PI * 0.5 * 1)
+      .absarc(-center, center, radius, Math.PI * 0.5 * 1, Math.PI * 0.5 * 2)
+      .absarc(-center,-center, radius, Math.PI * 0.5 * 2, Math.PI * 0.5 * 3)
+      .absarc( center,-center, radius, Math.PI * 0.5 * 3, Math.PI * 0.5 * 4)
+    shape.holes.push(hole);
+    
+    let g = new THREE.ExtrudeGeometry(
+      shape, 
+      {
+        depth: 0.875, 
+        bevelSize: 0.05,
+        bevelThickness: 0.05,
+        bevelSegments: 10
+      }
+    ).rotateX(-Math.PI * 0.5).rotateY(Math.PI * 0.25).translate(0, -1, 0);
+    let m = new THREE.MeshStandardMaterial({
+      color: 0x444444,
+      metalness: 0.6,
+      roughness: 0.4
+    });
+    
+    super(g, m);
+  }
+}
+
+let scene = new THREE.Scene();
+scene.backgroundNode = tsl.color(0x000000);
+let camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 100);
+camera.position.set(-0.1, 0.25, 1).setLength(5);
+let renderer = new THREE.WebGPURenderer({ antialias: true });
+renderer.setPixelRatio(devicePixelRatio);
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+
+let postprocessing = new Postprocessing(renderer);
+
+window.addEventListener("resize", (event) => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+let controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.enablePan = false;
+controls.minDistance = 5;
+controls.maxDistance = 10;
+controls.maxPolarAngle = Math.PI * 0.45;
+controls.autoRotate = true;
+
+let hollySurface = new HollySurface();
+scene.add(hollySurface);
+
+let boxOfLight = new BoxOfLight();
+boxOfLight.position.set(0, 1, 0);
+scene.add(boxOfLight);
+
+let clock = new THREE.Clock();
+let t = 0;
+
+renderer.setAnimationLoop(() => {
+  let dt = clock.getDelta();
+  t += dt;
+  controls.update();
+  boxOfLight.update(t);
+  //renderer.render(scene, camera);
+  postprocessing.render();
+});
+    </script>
+  </div>
+
+  <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -164,7 +355,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="./Theory.html" aria-current="page">
+              <a class="nav-link" href="./Theory.html" aria-current="page">
                 <span class="menu-text">Theory</span></a>
             </li>
             <li class="nav-item">
@@ -173,8 +364,12 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="./contact.html" aria-current="page">
+              <a class="nav-link active" href="./contact.html" aria-current="page">
                 <span class="menu-text">Contact</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Space.html"> 
+              <span class="menu-text">Space</span></a>
             </li>
           </ul>
         </div> <!-- /navcollapse -->
@@ -189,124 +384,13 @@
 
   <!-- content -->
   <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-
     <!-- sidebar -->
     <!-- margin-sidebar -->
-    <!-- <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">   
-    </div> -->
-    <!--这个地方原先有一个sidebar,在我添加我的sidebar之后,由于使用了相同的class标签名
-    相当于激活了这个sidebar,导致上面总是多出来一坨
-    并且还出现了x和y两个方向的overflow:scroll
-    我把前面哪个quarto-search-results也注释掉了
-    这是通过右键检查打开开发人员工具发现的
-    -2024年12月25日
-     -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
 
-
-    <button class="nav-btn open-btn" style="top: 60px;left:30px;">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <button class="nav-btn close-btn" style="top: 100px;left: 30px;">
-      <i class="fas fa-times"></i>
-    </button>
-
-    
-    <div class="nav nav-black" style="left: 30px;">
-      <div class="nav nav-red">
-        <div class="nav nav-white">
-          
-  
-  
-        <div class="sidebar">
-            <h2>DIRECTORY</h2>
-
-              <div class="menu-item" onclick="location.href='/Theory/软件建模.html'">
-                软件建模
-              </div>
-
-              <div class="menu-item" onclick="location.href='/Theory/软件本质.html'">
-                软件本质
-              </div>
-
-            <div class="menu-item" onclick="toggleSubmenu('数据库原理')">
-                数据库原理 >
-            </div>
-            <div id="数据库原理" class="submenu">
-                <div class="menu-item" onclick="location.href='/Theory/SQL.html'">SQL</div>
-                <div class="menu-item" onclick="location.href='/Theory/数据库原理.html'">数据库原理非SQL部分的其它内容</div>
-            </div>
-
-            <div class="menu-item" onclick="location.href='/Theory/软件测试.html'">
-              软件测试
-            </div>
-            <div class="menu-item" onclick="location.href='/Theory/哈希表.html'">
-              哈希表
-            </div>
-            <div class="menu-item" onclick="location.href='/Theory/操作系统.html'">
-              操作系统
-            </div>
-
-
-        </div>
-        <link rel="stylesheet" href="./Theory/style.css">
-        <script src="./Theory/script.js"></script>
-        
-        <style>
-
-          .sidebar {
-              width: 100%;  /*从250设置为100% */
-              height: 100%;
-
-              background-color: #2c3e50;
-              color: white;
-              position: absolute;
-              top: 15px;
-              padding: 20px;
-              box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-
-              /* overflow-y: scroll; */
-  
-          }
-          .sidebar h2 {
-              margin: 0;
-              font-size: 1.5em;
-          }
-          .menu-item {
-              margin: 10px 0;
-              cursor:pointer;
-              padding: 10px;
-              border-radius: 5px;
-              transition: background 0.3s;
-          }
-          .menu-item:hover {
-              background-color: #34495e;
-          }
-          .submenu {
-              display: none;
-              padding-left: 15px;
-          }
-
-        </style>
-
-
-        </div>
-      </div>
     </div>
+    <!-- main -->
 
-
-
-
-    <!-- <div style="position: absolute; right:250px; top: 60px;">
-      <h3>关于content页面</h3>
-      <br>
-      <p>content页面用于展示一些与软件相关的理论</p>
-
-    </div> -->
-
-
-  
-    <script src="/Theory/"></script>
 
 
 
@@ -741,7 +825,7 @@
     </div>
   </footer> -->
 
-  <!-- 这里如果保留footer,backgournd-image下面就会空出一坨矩形-->
+
 
 
 </body>
